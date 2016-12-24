@@ -14,4 +14,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getByUserName" resultMap="UserResult">
 		SELECT * FROM user WHERE userName=#{userName}
 	</select>
+
+	<update id="updateInfor" parameterType="User">
+		UPDATE user
+		<set>
+			<if test="avatar!=null and avatar!=''">
+				avatar=#{avatar},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+
+	<select id="list" parameterType="Map" resultMap="UserResult">
+		SELECT * FROM user ORDER BY id DESC
+	</select>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM user WHERE id=#{id}
+	</delete>
 </mapper> 

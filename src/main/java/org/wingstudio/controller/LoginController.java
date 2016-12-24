@@ -25,7 +25,14 @@ public class LoginController {
                     cryptographyUtil.md5(user.getPassword(),"jin"));
             try{
                 subject.login(token);
-                return "user/mainTemp";
+                System.out.println(user.getUserName());
+                if(user.getUserName().equals("liao")){
+
+                    return "redirect:/user/admin/c/main";
+                }else {
+
+                    return "redirect:/user/main";
+                }
             }catch (Exception e){
                 e.printStackTrace();
                 return "user/login";
@@ -33,5 +40,15 @@ public class LoginController {
         }else{
             return "user/login";
         }
+    }
+
+    @RequestMapping("/main")
+    public String redirect()throws Exception{
+        return "/user/main";
+    }
+
+    @RequestMapping("/admin/c/main")
+    public String admin()throws Exception{
+        return "/user/admin/c/console/main";
     }
 }

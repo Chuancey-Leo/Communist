@@ -1,5 +1,6 @@
 package org.wingstudio.realm;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -37,6 +38,7 @@ public class MyRealm extends AuthorizingRealm{
 		if (user!=null){
 			AuthenticationInfo authcInfo=new SimpleAuthenticationInfo(user.getUserName(),
 					user.getPassword(),"jin");
+			SecurityUtils.getSubject().getSession().setAttribute("currentUser", user);
 			return authcInfo;
 		}else {
 			return null;

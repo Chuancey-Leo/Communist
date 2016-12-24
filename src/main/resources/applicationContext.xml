@@ -58,15 +58,10 @@
 
     <!-- 自定义Realm -->
     <bean id="myRealm" class="org.wingstudio.realm.MyRealm"/>
-    <bean id="adminRealm" class="org.wingstudio.realm.AdminRealm"/>
 
     <!-- 安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="myRealm"/>
-    </bean>
-    <!-- 安全管理器 -->
-    <bean id="securityAdminManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="adminRealm"/>
     </bean>
 
     <!-- Shiro过滤器 -->
@@ -79,20 +74,6 @@
         <property name="filterChainDefinitions">
             <value>
                 /user/**=authc
-            </value>
-        </property>
-    </bean>
-
-    <!-- Shiro过滤器 -->
-    <bean id="shiroAdminFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <!-- Shiro的核心安全接口,这个属性是必须的 -->
-        <property name="securityManager" ref="securityAdminManager"/>
-        <!-- 身份认证失败，则跳转到登录页面的配置 -->
-        <property name="loginUrl" value="/admin/c/login"/>
-        <!-- Shiro连接约束配置,即过滤链的定义 -->
-        <property name="filterChainDefinitions">
-            <value>
-                /admin/c/**=authc
             </value>
         </property>
     </bean>

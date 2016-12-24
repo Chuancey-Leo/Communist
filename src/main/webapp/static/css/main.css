@@ -1,0 +1,63 @@
+nav .sidebar ul li a,
+nav .sidebar ul li a:hover,
+nav .sidebar ul li a:focus {
+  background: #333332;
+}
+#page-wrapper .main {
+  margin: 50px auto;
+  width: 90%;
+}
+#page-wrapper .panel-style .panel-heading {
+  background-color: #71b8c9;
+  opacity: .7;
+  color: #fff;
+  padding-top: 20px;
+  font-weight: bolder;
+}
+#page-wrapper .panel-style .panel-heading h3 {
+  width: 50%;
+  display: inline-block;
+  font-weight: bolder;
+}
+#page-wrapper .panel-style .panel-heading .addUser-btn {
+  display: inline-block;
+  float: right;
+}
+#page-wrapper .panel-style .panel-body .table thead tr th,
+#page-wrapper .panel-style .panel-body .table tbody tr td {
+  text-align: center;
+}
+#page-wrapper .panel-style .panel-body .btn-table {
+  background-color: #71b8c9;
+  color: #fff;
+}
+#page-wrapper .panel-style .panel-body .btn-table:hover {
+  background-color: #648fc9;
+}
+#page-wrapper .panel-style .panel-body .form-group-style {
+
+  margin: 20px auto;
+}
+.news-editor{
+  width:90%;
+  margin-left: 10%;
+}
+#page-wrapper .panel-style .panel-body .submit-btn {
+  background-color: #71b8c9;
+  color: #fff;
+  float: right;
+}
+#page-wrapper .table > thead > tr > th,
+#page-wrapper .table > tbody > tr > th,
+#page-wrapper .table > tfoot > tr > th,
+#page-wrapper .table > thead > tr > td,
+#page-wrapper .table > tbody > tr > td,
+#page-wrapper .table > tfoot > tr > td {
+  font-size: 0.85em;
+  color: #000;
+}
+@media screen and (max-width: 768px) {
+  .navbar-default.sidebar {
+    padding-bottom: 0;
+  }
+}
