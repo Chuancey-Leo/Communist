@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   User: liao
   Date: 16-12-23
@@ -78,13 +79,13 @@
                         <div class="form-group form-group-style">
                             <label for="newsTitle" class="col-sm-2 control-label">新闻标题</label>
                             <div class="col-sm-10">
-                                <input type="text" id="newsTitle" class="form-control" required placeholder="请输入新闻标题">
+                                <input value="<c:out value="${news.title}" escapeXml="true"/>" type="text" id="newsTitle" class="form-control" required placeholder="请输入新闻标题">
                             </div>
                         </div>
                         <div class="form-group form-group-style">
                             <label for="newsAuthor" class="col-sm-2 control-label">责任编辑人</label>
                             <div class="col-sm-10">
-                                <input type="text" id="newsAuthor" class="form-control" required placeholder="请输入编辑人姓名">
+                                <input value="<c:out value="${news.author}" escapeXml="true"/>" type="text" id="newsAuthor" class="form-control" required placeholder="请输入编辑人姓名">
                             </div>
                         </div>
                         <div class="form-group  form-group-style news-editor">
@@ -108,6 +109,11 @@
         autoHeightEnabled: true,
         autoFloatEnabled: true
     });
+
+    ue.addListener("ready",function () {
+        var content="${news.content}";
+        UE.getEditor('editor').setContent(content);
+    })
 </script>
 
 <jsp:include page="common/js.jsp"/>

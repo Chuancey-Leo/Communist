@@ -17,11 +17,11 @@ import java.util.Map;
 public class TopicServiceImpl implements TopicService{
     @Resource
     private TopicDao topicDao;
-    @Override
+
     public List<Topic> list(Map<String, Object> map) {
         return topicDao.list(map);
     }
-    @Override
+
     public Long getTotal(Map<String,Object> map) {
         return topicDao.getTotal(map);
     }

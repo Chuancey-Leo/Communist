@@ -32,4 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM user WHERE id=#{id}
 	</delete>
+
+	<insert id="importUsers" parameterType="User">
+		INSERT INTO user VALUES (null,#{number},#{number},null,#{password},#{number},0,null,null,null,null,null)
+	</insert>
 </mapper> 

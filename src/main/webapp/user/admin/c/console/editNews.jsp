@@ -75,18 +75,18 @@
                 <div class="panel-body">
                     <form action="" method="post" class="form-horizontal">
                         <div class="form-group form-group-style">
-                            <label for="newsTitle" class="col-sm-2 control-label">新闻标题</label>
-                            <div class="col-sm-10">
+                            <label for="newsTitle" class="control-label">新闻标题:</label>
+                            <div class="">
                                 <input type="text" id="newsTitle" class="form-control" required placeholder="请输入新闻标题">
                             </div>
                         </div>
                         <div class="form-group form-group-style">
-                            <label for="newsAuthor" class="col-sm-2 control-label">责任编辑人</label>
-                            <div class="col-sm-10">
+                            <label for="newsAuthor" class="control-label">责任编辑人:</label>
+                            <div class="">
                                 <input type="text" id="newsAuthor" class="form-control" required placeholder="请输入编辑人姓名">
                             </div>
                         </div>
-                        <div class="form-group  form-group-style news-editor">
+                        <div class="form-group news-editor">
                             <script id="editor" type="text/plain" style="width:100%;height:600px;"></script>
                         </div>
                         <div class="form-group form-group-style">

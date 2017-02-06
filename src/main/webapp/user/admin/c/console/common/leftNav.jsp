@@ -106,19 +106,14 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="index.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>新建新闻</a>
-                    <%--<ul class="nav nav-second-level">
-                        <li>
-                            <a href="#">lala</a>
-                        </li>
-                    </ul>--%>
+                    <a href="${pageContext.request.contextPath}/user/admin/c/editNews"><i class="fa fa-dashboard fa-fw nav_icon"></i>新建新闻</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-dashboard fa-fw nav_icon"></i>管理新闻<%--<span class="fa arrow"></span>--%></a>
+                    <a href="${pageContext.request.contextPath}/user/admin/c/manageNews"><i class="fa fa-dashboard fa-fw nav_icon"></i>管理新闻</a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-indent nav_icon"></i>今日打卡<span class="fa arrow"></span></a>
-                </li>
+                <%--<li>
+                    <a href="${pageContext.request.contextPath}/user/admin/c/managePass"><i class="fa fa-indent nav_icon"></i>今日打卡<span class="fa arrow"></span></a>
+                </li>--%>
                 <li>
                     <a href="#"><i class="fa fa-envelope nav_icon"></i>擂台挑战<span class="fa arrow"></span></a>
                 </li>
@@ -129,15 +124,15 @@
                     <a href="#"><i class="fa fa-check-square-o nav_icon"></i>题库管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="forms.html">添加题库</a>
+                            <a href="${pageContext.request.contextPath}/user/admin/c/importQuestions">导入题库</a>
                         </li>
                         <li>
-                            <a href="validation.html">修改题库</a>
+                            <a href="validation.html">修改题目</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-table nav_icon"></i>用户管理<span class="fa arrow"></span></a>
+                    <a href="${pageContext.request.contextPath}/user/admin/c/manageUsers"><i class="fa fa-table nav_icon"></i>用户管理<span class="fa arrow"></span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-sitemap fa-fw nav_icon"></i>Css<span class="fa arrow"></span></a>

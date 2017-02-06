@@ -63,9 +63,20 @@ public class NewsController {
     }
 
     @RequestMapping("/updateNews/{id}")
-    public ModelAndView updateNews(@PathVariable("id") Integer id){
+    public ModelAndView update(@PathVariable(value = "id")Integer id){
         ModelAndView modelAndView=new ModelAndView();
-        newsService.findById(id);
+        News news=newsService.findById(id);
+        modelAndView.setViewName("user/admin/c/console/updateNews");
+        modelAndView.addObject("news",news);
         return modelAndView;
+    }
+    @RequestMapping("/findById")
+    public String updateNews(@RequestParam(value = "id")String id,
+                                   HttpServletResponse response)throws Exception{
+
+        News news=newsService.findById(Integer.parseInt(id));
+        JSONObject jsonObject=JSONObject.fromObject(news);
+        ResponseUtil.write(response, jsonObject);
+        return null;
     }
 }

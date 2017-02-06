@@ -16,7 +16,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Resource
     private AdminDao adminDao;
-    @Override
+
     public Admin getByUserName(String userName) {
         return adminDao.getByUserName(userName);
     }

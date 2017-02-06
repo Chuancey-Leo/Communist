@@ -20,4 +20,7 @@ public interface UserDao {
 
     //删除用户
     public Integer delete(Integer id);
+
+    //添加用户组
+    public Integer importUsers(User user);
 }

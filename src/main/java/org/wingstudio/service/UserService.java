@@ -20,4 +20,10 @@ public interface UserService {
 
     //删除用户
     public Integer delete(Integer id);
+
+    //添加用户组
+    public Integer importUsers(User user);
+
+/*    //修改用户信息
+    public Integer modifyUser(User user);*/
 }

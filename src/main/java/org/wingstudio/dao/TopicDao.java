@@ -14,6 +14,4 @@ public interface TopicDao {
 
     //获取总数
     public Long getTotal(Map<String,Object> map);
-
-
 }

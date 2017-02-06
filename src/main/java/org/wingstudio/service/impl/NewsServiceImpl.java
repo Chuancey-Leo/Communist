@@ -17,22 +17,19 @@ import java.util.Map;
 public class NewsServiceImpl implements NewsService{
     @Resource
     private NewsDao newsDao;
-    @Override
+
     public Integer add(News news) {
         return newsDao.add(news);
     }
 
-    @Override
     public List<News> list(Map<String, Object> map) {
         return newsDao.list(map);
     }
 
-    @Override
     public Integer delete(Integer id) {
         return newsDao.delete(id);
     }
 
-    @Override
     public News findById(Integer id) {
         return newsDao.findById(id);
     }

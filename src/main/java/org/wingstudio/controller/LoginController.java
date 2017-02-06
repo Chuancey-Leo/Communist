@@ -26,7 +26,7 @@ public class LoginController {
             try{
                 subject.login(token);
                 System.out.println(user.getUserName());
-                if(user.getUserName().equals("liao")){
+                if(user.getUserName().equals("20140244")){
 
                     return "redirect:/user/admin/c/main";
                 }else {

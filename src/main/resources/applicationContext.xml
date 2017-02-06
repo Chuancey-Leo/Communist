@@ -102,6 +102,7 @@
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <!-- 定义事务传播属性 -->
         <tx:attributes>
+            <tx:method name="import*" propagation="REQUIRED"/>
             <tx:method name="init*" propagation="REQUIRED"/>
             <tx:method name="cancel*" propagation="REQUIRED"/>
             <tx:method name="toTopNews*" propagation="REQUIRED" />
