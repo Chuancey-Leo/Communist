@@ -127,7 +127,7 @@
                             <a href="${pageContext.request.contextPath}/user/admin/c/importQuestions">导入题库</a>
                         </li>
                         <li>
-                            <a href="validation.html">修改题目</a>
+                            <a href="${pageContext.request.contextPath}/user/admin/c/manageQue/single">修改题目</a>
                         </li>
                     </ul>
                 </li>

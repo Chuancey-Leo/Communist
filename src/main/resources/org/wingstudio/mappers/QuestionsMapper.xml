@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wingstudio.dao.QuestionsDao">
+	<resultMap type="Question" id="QuestionResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="key" column="key"/>
+		<result property="option1" column="option1"/>
+		<result property="option2" column="option2"/>
+		<result property="option3" column="option3"/>
+		<result property="option4" column="option4"/>
+		<result property="releaseDate" column="releaseDate"/>
+	</resultMap>
+
+	<insert id="importQuestions" parameterType="Map">
+		<if test="title!=null and key!=null">
+			INSERT INTO question VALUES (null,#{groupId},#{title},#{option1},#{option2},#{option3},#{option4},#{key},now())
+		</if>
+	</insert>
+	<select id="list" parameterType="Map" resultMap="QuestionResult">
+		SELECT * FROM question WHERE groupId=#{groupId} ORDER BY releaseDate DESC
+	</select>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM question WHERE id=#{id}
+	</delete>
+
+	<select id="findById" parameterType="Integer" resultMap="QuestionResult">
+		SELECT * FROM question WHERE id=#{id}
+	</select>
+</mapper> 

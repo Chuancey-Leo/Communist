@@ -13,8 +13,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_NUMERIC;
-
 /**
  * Created by liao on 16-12-30.
  */
@@ -78,6 +76,10 @@ public class ExcelUtil {
         Map<Object,List> map=new HashedMap();
         List<String> questions=new ArrayList<String>();
         List<String> keys=new ArrayList<String>();
+        List<String> option1=new ArrayList<String>();
+        List<String> option2=new ArrayList<String>();
+        List<String> option3=new ArrayList<String>();
+        List<String> option4=new ArrayList<String>();
         int rownum = sheet.getLastRowNum();// 获取总行数
         for (int i = 0; i <= rownum; i++) {
             Row row = sheet.getRow(i);
@@ -86,15 +88,35 @@ public class ExcelUtil {
                     Cell celldata = row.getCell(j);
                     String question=celldata.getStringCellValue();
                     questions.add(String.valueOf(question));
-                }else {
+                }else if(j==1){
                     Cell celldata = row.getCell(j);
                     String key=celldata.getStringCellValue();
                     keys.add(String.valueOf(key));
+                }else if(j==2){
+                    Cell celldata = row.getCell(j);
+                    String key1=celldata.getStringCellValue();
+                    option1.add(String.valueOf(key1));
+                }else if(j==3){
+                    Cell celldata = row.getCell(j);
+                    String key2=celldata.getStringCellValue();
+                    option2.add(String.valueOf(key2));
+                }else if(j==4){
+                    Cell celldata = row.getCell(j);
+                    String key3=celldata.getStringCellValue();
+                    option3.add(String.valueOf(key3));
+                }else if(j==5){
+                    Cell celldata = row.getCell(j);
+                    String key4=celldata.getStringCellValue();
+                    option4.add(String.valueOf(key4));
                 }
             }
         }
         map.put("questions",questions);
         map.put("keys",keys);
+        map.put("option1",option1);
+        map.put("option2",option2);
+        map.put("option3",option3);
+        map.put("option4",option4);
         return map;
     }
 }
