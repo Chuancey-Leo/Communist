@@ -26,4 +26,7 @@ public interface UserService {
 
 /*    //修改用户信息
     public Integer modifyUser(User user);*/
+
+    //添加用户
+    public Integer addUser(User user);
 }

@@ -23,4 +23,7 @@ public interface UserDao {
 
     //添加用户组
     public Integer importUsers(User user);
+
+    //添加用户
+    public Integer addUser(User user);
 }

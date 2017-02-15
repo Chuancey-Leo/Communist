@@ -37,5 +37,7 @@ public class UserServiceImpl implements UserService{
         return userDao.importUsers(user);
     }
 
-
+    public Integer addUser(User user) {
+        return userDao.addUser(user);
+    }
 }

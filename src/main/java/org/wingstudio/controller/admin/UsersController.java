@@ -30,6 +30,7 @@ import java.util.Map;
 @RequestMapping("/user/admin/c")
 public class UsersController {
 
+    CryptographyUtil cryptographyUtil=new CryptographyUtil();
     @Resource
     private UserService userService;
     @RequestMapping("/manageUsers")
@@ -62,6 +63,9 @@ public class UsersController {
     public String saveUser(User user,HttpServletResponse response)
             throws Exception{
 
+        user.setAvatar("default.img");
+        user.setPassword(cryptographyUtil.md5(String.valueOf(user.getNumber()),"jin"));
+        userService.addUser(user);
         JSONObject result=new JSONObject();
         result.put("success", true);
         ResponseUtil.write(response, result);
@@ -79,7 +83,7 @@ public class UsersController {
                           @RequestParam("file")MultipartFile file)
             throws Exception{
         String path = request.getSession().getServletContext().getRealPath("/static/usersFile");
-        System.out.println(path);
+        //System.out.println(path);
         String prefix=file.getOriginalFilename().substring(
                 file.getOriginalFilename().lastIndexOf("."));
         String name=String.valueOf(Calendar.getInstance().getTimeInMillis());
@@ -91,7 +95,7 @@ public class UsersController {
 
 
         User user=new User();
-        CryptographyUtil cryptographyUtil=new CryptographyUtil();
+
         ExcelUtil excelUtil=new ExcelUtil();
         List<String> numbers=excelUtil.readFromExcelDemo(targetFile.getAbsolutePath());
         for (String number:numbers) {

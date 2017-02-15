@@ -9,6 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="password" column="password"/>
 		<result property="major" column="major"/>
 		<result property="avatar" column="avatar"/>
+		<result property="points" column="points"/>
+		<result property="birth" column="birth"/>
+		<result property="sex" column="sex"/>
+		<result property="place" column="place"/>
+		<result property="political" column="political"/>
+		<result property="nation" column="nation"/>
 	</resultMap>
 
 	<select id="getByUserName" resultMap="UserResult">
@@ -34,6 +40,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 	<insert id="importUsers" parameterType="User">
-		INSERT INTO user VALUES (null,#{number},#{number},null,#{password},#{number},0,null,null,null,null,null)
+		INSERT INTO user VALUES (null,#{number},#{number},null,#{password},#{avatar},0,null,null,null,null,null)
+	</insert>
+
+	<insert id="addUser" parameterType="User">
+		INSERT INTO user VALUES (null,#{userName},#{number},null,#{password},#{avatar},0,#{birth},#{sex},#{place},#{political},#{nation})
 	</insert>
 </mapper> 
