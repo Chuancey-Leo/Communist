@@ -17,4 +17,6 @@ public interface QuestionsService {
     public Integer delete(Integer id);
 
     public Question findById(Integer id);
+
+    public Integer update(Question question);
 }

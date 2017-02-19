@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.wingstudio.entity.Question;
@@ -123,6 +124,16 @@ public class QuestionsController {
         result.put("option2",question.getOption2());
         result.put("option3",question.getOption3());
         result.put("option4",question.getOption4());
+        ResponseUtil.write(response,result);
+    }
+
+    @RequestMapping("/updateQuestion")
+    public void updateQuestion(HttpServletResponse response,
+                               Question question)throws Exception{
+        //System.out.println(question.getId());
+        questionsService.update(question);
+        JSONObject result=new JSONObject();
+        result.put("success",true);
         ResponseUtil.write(response,result);
     }
 }

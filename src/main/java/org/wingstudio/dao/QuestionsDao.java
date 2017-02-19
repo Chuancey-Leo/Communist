@@ -17,4 +17,6 @@ public interface QuestionsDao {
     public Integer delete(Integer id);
 
     public Question findById(Integer id);
+
+    public Integer update(Question question);
 }

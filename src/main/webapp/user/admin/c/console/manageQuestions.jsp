@@ -39,7 +39,7 @@
                             <c:forEach var="question" items="${questions}">
                                 <tr>
                                     <td><c:out value="${question.title}" escapeXml="true"/></td>
-                                    <td>${question.key}</td>
+                                    <td>${question.optionKey}</td>
                                     <td>
                                         <fmt:formatDate value="${question.releaseDate }" type="date" pattern="yyyy-MM-dd HH:mm"/>
                                     </td>
@@ -47,7 +47,7 @@
                                         <button class="btn btn-table" onclick="deleteData(${question.id})"><i class="fa fa-trash-o"></i></button>
                                     </td>
                                     <td>
-                                        <button class="btn btn-table" data-toggle="modal" data-target="#myModal" onclick="test(${question.id})"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-table" data-toggle="modal" data-target="#myModal" onclick="getQuestion(${question.id})"><i class="fa fa-edit"></i></button>
                                     </td>
 
                                     <td>
@@ -76,28 +76,74 @@
 </div>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">修改</h4>
-            </div>
-            <div class="modal-body"><input id="title" type="text"/></div>
+<form method="post" action="" onsubmit="return check_form()">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">修改</h4>
+                </div>
 
-            <div class="modal-body"><input name="option" type="radio" sel>A.<input id="option1" type="text" value=""></div>
-            <div class="modal-body"><input name="option" type="radio">B.<input id="option2" type="text"></div>
-            <div class="modal-body"><input name="option" type="radio">C.<input id="option3" type="text"></div>
-            <div class="modal-body"><input name="option" type="radio">D.<input id="option4" type="text"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">提交更改</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
+                <div class="modal-body"><input id="questionId" type="hidden"><input id="title" type="text"/></div>
+
+                <div class="modal-body"><input name="option" type="radio" value="1">A.<input id="option1" type="text"></div>
+                <div class="modal-body"><input name="option" type="radio" value="2">B.<input id="option2" type="text"></div>
+                <div class="modal-body"><input name="option" type="radio" value="3">C.<input id="option3" type="text"></div>
+                <div class="modal-body"><input name="option" type="radio" value="4">D.<input id="option4" type="text"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">提交更改</button><span id="tip"> </span>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</form>
 <jsp:include page="common/js.jsp"/>
 <script type="text/javascript">
+
+        // 提交表单
+        function check_form() {
+            /*var user_id = $.trim($('#user_id').val());
+            var act     = $.trim($('#act').val());*/
+            var id=$("#questionId").val();
+            var title=$("#title").val();
+            var optionKey=$('input:radio[name="option"]').val();
+            var option1=$("#option1").val();
+            var option2=$("#option2").val();
+            var option3=$("#option3").val();
+            var option4=$("#option4").val();
+
+            //var form_data = $('#form_data').serialize();
+
+            // 异步提交数据到action/add_action.php页面
+            $.ajax(
+                    {
+                        url: "${pageContext.request.contextPath}/user/admin/c/updateQuestion",
+                        data: {"id":id,"title":title,"optionKey":optionKey,"option1":option1,"option2":option2,"option3":option3,"option4":option4},
+                        type: "post",
+                        beforeSend:function()
+                        {
+                            $("#tip").html("<span style='color:blue'>正在处理...</span>");
+                            return true;
+                        },
+                        success:function(data) {
+                            alert("success");
+                            window.location.reload();
+                        },
+                        error:function()
+                        {
+                            alert('请求出错');
+                        },
+                        complete:function()
+                        {
+                            $('#acting_tips').hide();
+                        }
+                    });
+
+            return false;
+        }
+
     function deleteData(id){
         swal({title: "确定删除吗?",
                     text: "此数据将无法恢复!",
@@ -124,9 +170,10 @@
                     },"json");
                 });
     }
-    function test(id){
+    function getQuestion(id){
         $.post("${pageContext.request.contextPath}/user/admin/c/question/findById",{id:id    },function(result){
             if(result.success){
+                $("#questionId").val(id);
                 $("#title").val(result.title);
                 $("#option1").val(result.option1);
                 $("#option2").val(result.option2);

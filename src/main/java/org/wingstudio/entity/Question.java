@@ -8,13 +8,21 @@ import java.util.Date;
 public class Question {
     private Integer id;
     private String title;
-    private String key;
+    private String optionKey;
     private Date releaseDate;
     private String option1;
     private String option2;
     private String option3;
     private String option4;
 
+
+    public String getOptionKey() {
+        return optionKey;
+    }
+
+    public void setOptionKey(String optionKey) {
+        this.optionKey = optionKey;
+    }
 
     public String getOption1() {
         return option1;
@@ -70,13 +78,5 @@ public class Question {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 }

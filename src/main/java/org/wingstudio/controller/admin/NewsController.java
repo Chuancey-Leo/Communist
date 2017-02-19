@@ -48,8 +48,8 @@ public class NewsController {
                          HttpServletRequest request)throws Exception{
 
         newsService.add(news);
-        JSONObject result=new JSONObject();
-        result.put("success", true);
+        JSONObject result=JSONObject.fromObject(news);
+        result.put("success",true);
         ResponseUtil.write(response, result);
     }
 
@@ -71,12 +71,11 @@ public class NewsController {
         return modelAndView;
     }
     @RequestMapping("/findById")
-    public String updateNews(@RequestParam(value = "id")String id,
+    public void updateNews(@RequestParam(value = "id")String id,
                                    HttpServletResponse response)throws Exception{
 
         News news=newsService.findById(Integer.parseInt(id));
         JSONObject jsonObject=JSONObject.fromObject(news);
         ResponseUtil.write(response, jsonObject);
-        return null;
     }
 }

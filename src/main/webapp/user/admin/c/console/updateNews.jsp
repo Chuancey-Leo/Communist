@@ -111,8 +111,20 @@
     });
 
     ue.addListener("ready",function () {
-        var content="${news.content}";
-        UE.getEditor('editor').setContent(content);
+        //通过ajax请求数据
+        UE.ajax.request("${pageContext.request.contextPath}/user/admin/c/findById",
+                {
+                    method:"post",
+                    async : false,
+                    data:{"id":"${news.id}"},
+                    onsuccess:function(result){
+                        alert(result.responseText);
+                        var test = eval("(" + result.responseText + ")");
+                        alert(test.responseText);
+                        UE.getEditor('editor').setContent(test.content);
+                    }
+                }
+        );
     })
 </script>
 

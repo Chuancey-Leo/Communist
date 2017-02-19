@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="Question" id="QuestionResult">
 		<result property="id" column="id"/>
 		<result property="title" column="title"/>
-		<result property="key" column="key"/>
+		<result property="optionKey" column="optionKey"/>
 		<result property="option1" column="option1"/>
 		<result property="option2" column="option2"/>
 		<result property="option3" column="option3"/>
@@ -30,4 +30,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findById" parameterType="Integer" resultMap="QuestionResult">
 		SELECT * FROM question WHERE id=#{id}
 	</select>
+
+	<update id="update" parameterType="Question">
+		UPDATE question
+		<set>
+			<if test="title!=null and title!=''">
+				title=#{title},
+			</if>
+
+			<if test="option1!=null and option1!=''">
+				option1=#{option1},
+			</if>
+
+			<if test="option2!=null and option2!=''">
+				option2=#{option2},
+			</if>
+
+			<if test="option3!=null and option3!=''">
+				option3=#{option3},
+			</if>
+
+			<if test="option4!=null and option4!=''">
+			option4=#{option4},
+			</if>
+			<if test="optionKey!=null and optionKey!=''">
+				optionKey=#{optionKey},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
 </mapper> 

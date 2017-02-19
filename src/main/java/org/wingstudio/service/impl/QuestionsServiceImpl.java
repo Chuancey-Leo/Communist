@@ -32,4 +32,8 @@ public class QuestionsServiceImpl implements QuestionsService {
     public Question findById(Integer id) {
         return questionsDao.findById(id);
     }
+
+    public Integer update(Question question) {
+        return questionsDao.update(question);
+    }
 }
